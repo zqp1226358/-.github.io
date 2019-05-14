@@ -1044,14 +1044,15 @@
 
   
   
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unjkp.com/valine/dist/Valine.min.js"></script>  //删除Valine核心代码库外链调用
+  <script src="/js/src/Valine.min.js"></script>  //调用刚下载的本地文件以加速加载速度
 
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+ //改为本地下载
 
+<script src="/js/src/Valine.min.js"></script>
 
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
+<script type="text/javascript">
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
   guest = guest.split(',').filter(function(item) {
@@ -1064,12 +1065,20 @@
     appId: '1faywQ3G7kgcy81h1KOHPTtf-gzGzoHsz',
     appKey: '0qHD4Bq0B89d5pXKf7SYqYWb',
     placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
-    avatar: 'mm',
+    avatar: 'wavatar',
     meta: guest,
     pageSize: '10' || 10,
     visitor: true,
     lang: 'zh-cn' || 'zh-cn'
   });
+   //增加以下六行代码去除 power by valine
+    var infoEle = document.querySelector('#comments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+      infoEle.childNodes.forEach(function(item) {
+        item.parentNode.removeChild(item);
+      });
+    }
+
 </script>
 
 
